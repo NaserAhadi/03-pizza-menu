@@ -77,10 +77,7 @@ const Footer = function () {
   return (
     <footer className="footer">
       {isOpen ? (
-        <div className="order">
-          <p>We're open until {closeHour}:00. Come visit us or order online</p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closeHour={closeHour} />
       ) : (
         <p>
           we're open between {openHour}:00 and {closeHour}:00
@@ -90,6 +87,16 @@ const Footer = function () {
   );
   // return React.createElement('footer', null, "We are currently open")
 };
+
+function Order({ closeHour }) {
+  return (
+    <div className="order">
+      <p>We're open until {closeHour}:00. Come visit us or order online</p>
+      <button className="btn">Order</button>
+    </div>
+  );
+}
+
 function Menu() {
   const pizzaNum = pizzaData.length;
   return (
