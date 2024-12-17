@@ -2,6 +2,7 @@ import React from "react";
 import ReactDom from "react-dom/client";
 import "./index.css";
 
+// const pizzaData = [];
 const pizzaData = [
   {
     name: "Focaccia",
@@ -75,11 +76,15 @@ const Footer = function () {
   // else alert('We are closed')
   return (
     <footer className="footer">
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>We're open until {closeHour}:00. Come visit us or order online</p>
           <button className="btn">Order</button>
         </div>
+      ) : (
+        <p>
+          we're open between {openHour}:00 and {closeHour}:00
+        </p>
       )}
     </footer>
   );
@@ -90,12 +95,14 @@ function Menu() {
   return (
     <main className="menu">
       <h2> Our Menu: </h2>
-      {pizzaNum > 0 && (
+      {pizzaNum > 0 ? (
         <ul className="pizzas">
           {pizzaData.map((pizza) => {
             return <Pizza key={pizza.name} pizzaObj={pizza} />;
           })}
         </ul>
+      ) : (
+        <p>we're working on menu :)</p>
       )}
     </main>
   );
